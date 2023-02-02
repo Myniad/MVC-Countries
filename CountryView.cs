@@ -16,7 +16,13 @@ namespace MVC_Countries
         }
         public void Display()
         {
-            Console.WriteLine($"{DisplayCountry.Name}  {DisplayCountry.continent} {DisplayCountry.Colors}");
+            Console.WriteLine($"{DisplayCountry.Name}  {DisplayCountry.continent}");
+            Console.WriteLine("colors:");
+            foreach (string color in DisplayCountry.Colors)
+            {
+                Console.WriteLine(color);
+            }
         }
+        
     }
 }

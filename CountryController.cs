@@ -10,10 +10,9 @@ namespace MVC_Countries
     {
         List<Country> CountryDB = new List<Country>()
         {
-            new Country("US","NA",),
-            new Country("","",""),
-            new Country("","",""),
-            new Country("","","")
+           new Country("United States", "North America", new List<string>() { "red", "white", "blue" }),
+           new Country("Belize", "North America", new List<string>() { "red", "white", "blue" }),
+           new Country("Costa Rica", "North America", new List<string>() { "blue", "white", "red" })
         };
 
         public void CountryAction(Country c)
@@ -24,16 +23,45 @@ namespace MVC_Countries
 
         public void WelcomeAction()
         {
-
-
-
-            Console.WriteLine("Hellom welcome to the country app. Please select a country from the following list.");
-            CountryListView view = new CountryListView();
-            view.Display();
-            foreach(Country c in CountryDB)
+            bool runProgram = true;
+            while(runProgram)
             {
-                CountryAction(c);
+            CountryListView view = new CountryListView(CountryDB);
+            Console.WriteLine("Hello welcome to the country app. Please select a country from the following list.");
+            view.Display();
+
+            int choice = int.Parse(Console.ReadLine());
+            Country result = CountryDB[choice];
+            CountryAction(result);
+
+
+
+
+
+                while (true)
+                {
+                    Console.WriteLine("Do you want to continue? y/n");
+                    string cCheck = Console.ReadLine();
+                    if (cCheck == "y")
+                    {
+                        runProgram = true;
+                        break;
+                    }
+                    else if (cCheck =="n")
+                    {
+                        runProgram = false;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid");
+                    }
+                }
             }
+
+
+
+            
         }
 
 

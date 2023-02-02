@@ -10,14 +10,18 @@ namespace MVC_Countries
     {
         public List<Country> Countries { get; set; }
 
-
+        public CountryListView(List<Country> countries)
+        {
+            Countries = countries;
+        }
 
         public void Display()
         {
-            foreach (var country in Countries)
+            for (int i =0; i < Countries.Count; i++)
             {
-                Console.WriteLine($"{country.Name} {country.continent} {country.Colors}");
+                Console.WriteLine($"{i} {Countries[i].Name}");
             }
+
         }
 
     }
